@@ -5,6 +5,8 @@ import ProductCard from "../../components/cards/ProductCard";
 import { Checkbox, Radio } from "antd";
 import { prices } from "../../prices";
 import Loading from "../../routes/Loading";
+import "./shop.css";
+import { BiSlider } from "react-icons/bi";
 
 const Shop = () => {
   const [categories, setCategories] = useState([]);
@@ -73,65 +75,76 @@ const Shop = () => {
   return (
     <>
       <Jumbotron title="Hello World" subTitle="Welcome to React E-commerce" />
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-md-3">
-            <h4 className="p-3 my-2 bg-light text-center">
-              Filter by Categories
-            </h4>
-            <div className="row p-5">
-              {categories?.map((c) => (
-                <Checkbox
-                  key={c._id}
-                  onChange={(e) => handleCheck(e.target.checked, c._id)}
-                >
-                  {c.name}
-                </Checkbox>
-              ))}
-            </div>
+      {/* shop section  */}
+      <section className="shop">
+        <div className="shop-menu py-2">
+          <div className="container d-flex justify-content-between align-items-center">
+            <div className="d-flex filter">
+              <BiSlider style={{ fontSize: "25px" }} className="pointer" />
+              <div className="ms-3 pointer">Fileter</div>
 
-            <h4 className="p-3 my-2 bg-light text-center">Filter by Price</h4>
-            <div className="row p-5">
-              <Radio.Group onChange={(e) => setRadio(e.target.value)}>
-                {prices?.map((p) => (
-                  <div key={p._id}>
-                    <Radio value={p.array}>{p.name}</Radio>
+              <div className="filter-menu ">
+                <div className=" d-md-flex">
+                  <div style={{ width: "50%" }}>
+                    <h6 className=" ">Filter by Categories</h6>
+                    <div className="row">
+                      {categories?.map((c) => (
+                        <Checkbox
+                          key={c._id}
+                          onChange={(e) => handleCheck(e.target.checked, c._id)}
+                        >
+                          {c.name}
+                        </Checkbox>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div style={{ width: "50%" }}>
+                    <h6 className="  ">Filter by Price</h6>
+                    <div className="row">
+                      <Radio.Group onChange={(e) => setRadio(e.target.value)}>
+                        {prices?.map((p) => (
+                          <div key={p._id}>
+                            <Radio value={p.array}>{p.name}</Radio>
+                          </div>
+                        ))}
+                      </Radio.Group>
+                    </div>
+                  </div>
+                </div>
+
+                <div className=" mt-2">
+                  <button
+                    className="btn btn-outline-secondary col-12"
+                    onClick={() => window.location.reload()}
+                  >
+                    Reset
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h4>Total: {products?.length} Products</h4>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="container mt-3">
+        <div className="row">
+          {loading ? (
+            <Loading />
+          ) : (
+            <>
+              <div className="row">
+                {products?.map((p) => (
+                  <div className="col-md-3" key={p._id}>
+                    <ProductCard p={p} />
                   </div>
                 ))}
-              </Radio.Group>
-            </div>
-
-            <div className="p-5 pt-0">
-              <button
-                className="btn btn-outline-secondary col-12"
-                onClick={() => window.location.reload()}
-              >
-                Reset
-              </button>
-            </div>
-          </div>
-          <div className="col-md-9">
-            {loading ? (
-              <Loading />
-            ) : (
-              <>
-                <h4 className="p-3 my-2 bg-light text-center">
-                  {products?.length} Products
-                </h4>
-
-                <div
-                  className="row"
-                  style={{ height: "80vh", overflow: "scroll" }}
-                >
-                  {products?.map((p) => (
-                    <div className="col-md-4" key={p._id}>
-                      <ProductCard p={p} />
-                    </div>
-                  ))}
-                </div>
-              </>
-            )}
-          </div>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </>

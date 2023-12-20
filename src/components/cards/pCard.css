@@ -1,0 +1,16 @@
+.pCard-btn {
+  background-color: #b88e2f;
+  border: none;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 0 5px 0;
+}
+.pCard-btn2 {
+  background-color: white;
+  font-weight: bold;
+  border: none;
+  color: #b88e2f;
+  padding: 5px 19px;
+  border-radius: 5px 0px 0px 0px;
+  border: 1px solid #b88e2f;
+}

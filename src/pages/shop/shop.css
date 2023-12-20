@@ -1,0 +1,22 @@
+.shop-menu {
+  background-color: #f9f1e7;
+}
+
+.filter {
+  position: relative;
+}
+
+.filter-menu {
+  display: none;
+  position: absolute;
+  padding: 20px;
+  background-color: #f9f1e7;
+  width: 400px;
+  z-index: 1;
+  top: 100%;
+  border-radius: 12px;
+}
+
+.filter:hover .filter-menu {
+  display: block;
+}

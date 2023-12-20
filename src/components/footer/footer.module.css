@@ -1,0 +1,40 @@
+.footerbg {
+  margin-top: 30px;
+}
+.aDesign {
+  text-decoration: none;
+  color: black;
+  display: block;
+  padding: 12px 0px;
+  transition: color 0.3s ease-in;
+}
+.aDesign:hover {
+  color: #b88e2f;
+}
+
+.commonColor {
+  color: gray;
+}
+
+.mail {
+  border: none;
+  border-bottom: 1px solid #b88e2f;
+  display: inline;
+  width: 50%;
+}
+
+.mail:focus {
+  border: none;
+  outline: none;
+  border-bottom: 2px solid #b88e2f;
+}
+
+.subBtn {
+  display: inline;
+  border: none;
+  padding: 8px 10px;
+  border-radius: 5px;
+  color: white;
+  background-color: #b88e2f;
+  margin-left: 5px;
+}

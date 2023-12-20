@@ -1,7 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../layout/Main";
 import ErrorPage from "../pages/ErrorPage";
-import Home from "../pages/Home";
 import Login from "../pages/auth/Login";
 import Register from "../pages/auth/Register";
 import UserDashboard from "../pages/user/UserDashboard";
@@ -16,6 +15,11 @@ import AdminProducts from "../pages/admin/AdminProducts";
 import AdminProductUpdate from "../pages/admin/AdminProductUpdate";
 import Shop from "../pages/shop/Shop";
 import Search from "../pages/Search";
+import ProductView from "../pages/ProductView";
+import CategoriesList from "../pages/CategoriesList";
+import CategoryView from "../pages/CategoryView";
+import Cart from "../pages/Cart";
+import Home from "../pages/home/Home";
 
 export const routes = createBrowserRouter([
   {
@@ -26,6 +30,22 @@ export const routes = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/category/:slug",
+        element: <CategoryView />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
+      },
+      {
+        path: "/categories",
+        element: <CategoriesList />,
+      },
+      {
+        path: "/product/:slug",
+        element: <ProductView />,
       },
       {
         path: "/search",

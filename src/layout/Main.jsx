@@ -3,14 +3,20 @@ import Menu from "../components/nav/Menu";
 import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "../context/auth";
 import { SearchProvider } from "../context/search";
+import { CartProvider } from "../context/cart";
+import Footer from "../components/footer/Footer";
+import MenuLg from "../components/nav/MenuLg";
 
 const Main = () => {
   return (
     <AuthProvider>
       <SearchProvider>
-        <Toaster></Toaster>
-        <Menu />
-        <Outlet></Outlet>
+        <CartProvider>
+          <Toaster></Toaster>
+          <MenuLg />
+          <Outlet></Outlet>
+          <Footer />
+        </CartProvider>
       </SearchProvider>
     </AuthProvider>
   );

@@ -1,0 +1,16 @@
+.search-input {
+  width: 120px;
+  border: none;
+  border-bottom: 1px solid #b88e2f;
+}
+.search-input:focus {
+  outline: none;
+  border-bottom: 2px solid #b88e2f;
+}
+.search-btn {
+  border: none;
+  background-color: #b88e2f;
+  color: white;
+  padding: 5px 8px;
+  border-radius: 5px;
+}

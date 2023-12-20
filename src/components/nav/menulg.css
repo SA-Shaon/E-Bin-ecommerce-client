@@ -1,0 +1,49 @@
+a {
+  color: black;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.profileImg {
+  cursor: pointer;
+}
+.user-container {
+  position: relative;
+}
+.user-dropdown {
+  position: absolute;
+  transition: transform 1s ease-in, display 0.3s ease-in;
+  top: -1000px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px 12px;
+}
+.user-container:hover .user-dropdown {
+  display: block;
+  transform: translateY(10px);
+  top: 36px;
+  right: -15px;
+}
+
+.search-container {
+  position: relative;
+}
+
+.search-dropdown {
+  position: absolute;
+  transition: position 1s ease-in;
+
+  right: -80px;
+  background-color: white;
+  display: none;
+  border-radius: 5px;
+  padding: 5px 12px;
+  width: 210px;
+}
+.search-container:hover .search-dropdown {
+  display: block;
+}
+
+.nav-btn:hover {
+  color: #b88e2f;
+}

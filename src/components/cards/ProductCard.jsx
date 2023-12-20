@@ -1,9 +1,17 @@
-import moment from "moment";
 import { Badge } from "antd";
+import { useNavigate } from "react-router-dom";
+import { useCart } from "../../context/cart";
+import toast from "react-hot-toast";
+import moment from "moment";
+import "./pCard.css";
 
 const ProductCard = ({ p }) => {
+  //context
+  const { cart, setCart } = useCart();
+
+  const navigate = useNavigate();
   return (
-    <div className="card mb-3 hoverable">
+    <div className="card mb-4">
       <Badge.Ribbon text={`${p?.sold} sold`} color="red">
         <Badge.Ribbon
           text={`${
@@ -14,40 +22,49 @@ const ProductCard = ({ p }) => {
           placement="start"
           color="green"
         >
-          <img
-            className="card-img-top"
-            src={`${import.meta.env.VITE_API}/product/photo/${p?._id}`}
-            alt={p?.name}
-            style={{ height: "300px", objectFit: "cover" }}
-          />
+          <div className="bg-primary" style={{ height: "250px" }}>
+            <img
+              style={{ width: "100%", height: "100%" }}
+              src={`${import.meta.env.VITE_API}/product/photo/${p?._id}`}
+              alt={p?.name}
+            />
+          </div>
         </Badge.Ribbon>
       </Badge.Ribbon>
       <div className="card-body">
-        <h5> {p?.name} </h5>
-        <h4 className="fw-blod">
+        <h6 style={{ color: "#b88e2f" }}> {p?.name?.substring(0, 15)} </h6>
+        <b className="fw-blod">
           {p?.price?.toLocaleString("bn-BD", {
             style: "currency",
             currency: "BDT",
           })}
-        </h4>
+        </b>
+        <div className="mb-2">
+          <small style={{ color: "gray" }}>
+            createdAt: {moment(p?.createdAt).fromNow()}
+          </small>
+        </div>
         <p className="card-text">{p?.description?.substring(0, 60)}...</p>
       </div>
-      <div className="d-flex justify-content-between">
+      <div className="d-flex ">
         <button
           style={{ borderBottomLeftRadius: "5px" }}
-          className="btn btn-primary col card-button"
+          className="pCard-btn w-50"
+          onClick={() => navigate(`/product/${p?.slug}`)}
         >
           View Product
         </button>
         <button
           style={{ borderBottomRightRadius: "5px" }}
-          className="btn btn-outline-primary col card-button"
+          className="pCard-btn2 w-50 "
+          onClick={() => {
+            setCart([...cart, p]);
+            toast.success("Added to Cart");
+          }}
         >
           Add to Cart
         </button>
       </div>
-      {/* <p>{moment(p?.createdAt).fromNow()}</p>
-      <p>Sold: {p?.sold}</p> */}
     </div>
   );
 };

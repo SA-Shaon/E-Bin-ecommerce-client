@@ -1,0 +1,65 @@
+.home-header-bg {
+  background-image: url("https://i.ibb.co/y5xhzbb/home-bg-img.png");
+  height: 95vh;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.home-header-text {
+  background-color: rgba(255, 243, 227, 1);
+  height: 350px;
+  width: 490px;
+  border-radius: 8px;
+  padding: 50px 40px;
+  position: relative;
+  top: 25%;
+  left: 60%;
+}
+.home-btn {
+  background-color: #b88e2f;
+  border: none;
+  color: white;
+  padding: 13px 18px;
+  border-radius: 5px;
+}
+.home-btn2 {
+  background-color: white;
+  font-weight: bold;
+  border: none;
+  color: #b88e2f;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid #b88e2f;
+}
+
+@media (max-width: 768px) {
+  .home-header-text {
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 576px) {
+  .home-header-text {
+    padding: 30px 20px;
+  }
+}
+
+.home-header-text h3 {
+  color: #b88e2f;
+}
+
+.home-top-category {
+  text-align: center;
+}
+
+.explore-bg {
+  background-color: #fcf8f3;
+}
+
+.identity {
+  background-color: #faf3ea;
+}

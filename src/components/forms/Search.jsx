@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useSearch } from "../../context/search";
 import { useNavigate } from "react-router-dom";
+import "./search.css";
 
 const Search = () => {
   // hooks
@@ -25,14 +26,16 @@ const Search = () => {
       <input
         type="search"
         style={{ borderRadius: "0px" }}
-        className="form-control"
+        className="search-input"
         placeholder="Search"
-        onChange={(e) => setValues({ ...values, keyword: e.target.value })}
+        onChange={(e) => {
+          setValues({ ...values, keyword: e.target.value });
+        }}
         value={values.keyword}
       />
 
       <button
-        className="btn btn-outline-primary"
+        className="search-btn ms-2 d-flex justify-content-between  align-items-center"
         type="submit"
         style={{ borderRadius: "0px" }}
       >
