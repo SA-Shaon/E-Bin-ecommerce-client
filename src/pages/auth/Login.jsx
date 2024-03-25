@@ -27,7 +27,7 @@ const Login = () => {
         localStorage.setItem("auth", JSON.stringify(data));
         setAuth({ ...auth, token: data.token, user: data.user });
         toast.success("Login successfully.");
-        navigate(location?.state?.from?.pathname || "/");
+        navigate(location?.state || "/");
       }
     } catch (err) {
       console.log(err.message);

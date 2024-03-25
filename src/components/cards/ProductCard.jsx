@@ -59,6 +59,7 @@ const ProductCard = ({ p }) => {
           className="pCard-btn2 w-50 "
           onClick={() => {
             setCart([...cart, p]);
+            localStorage.setItem("cart", JSON.stringify([...cart, p]));
             toast.success("Added to Cart");
           }}
         >

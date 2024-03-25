@@ -87,7 +87,7 @@ const AdminProductUpdate = () => {
       productData.append("shipping", shipping);
       productData.append("quantity", quantity);
       productData.append("price", price);
-      console.log([...productData]);
+      // console.log([...productData]);
       const { data } = await axios.put(
         `${import.meta.env.VITE_API}/product/${id}`,
         productData,

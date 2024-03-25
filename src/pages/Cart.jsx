@@ -3,21 +3,54 @@ import { useAuth } from "../context/auth";
 import { useCart } from "../context/cart";
 import Jumbotron from "../components/cards/Jumbotron";
 import moment from "moment";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const Cart = () => {
   //context
   const { cart, setCart } = useCart();
-  const { auth, setAuth } = useAuth();
-  console.log(cart);
+  const { auth } = useAuth();
   // hooks
   const navigate = useNavigate();
 
   const removeFromCart = (productId) => {
     let myCart = [...cart];
-    console.log(productId);
     let index = myCart.findIndex((item) => item.name === productId);
     myCart.splice(index, 1);
     setCart(myCart);
+    localStorage.setItem("cart", JSON.stringify(myCart));
+  };
+
+  const cartTotal = () => {
+    let total = 0;
+    cart.map((item) => {
+      total += item.price;
+    });
+    return total.toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+    });
+  };
+
+  const handlePurchase = async () => {
+    try {
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_API}/order/newTransaction`,
+        {
+          cart,
+        }
+      );
+      if (data?.error) {
+        toast.error(data.error);
+      } else {
+        setCart([]);
+        localStorage.removeItem("cart");
+        navigate("/dashboard/user/orders");
+        toast.success("Purchased Successful.");
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -58,9 +91,9 @@ const Cart = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-8">
-              {cart?.map((p) => (
+              {cart?.map((p, index) => (
                 <div
-                  key={p._id}
+                  key={index}
                   className="card mb-3"
                   style={{ maxWidth: "540" }}
                 >
@@ -108,7 +141,52 @@ const Cart = () => {
                 </div>
               ))}
             </div>
-            <div className="col-md-4">Total / Address / Payments</div>
+            <div className="col-md-4">
+              <h4>Your cart summary</h4>
+              Total / Address / Payments
+              <hr />
+              <h6>Total: {cartTotal()}</h6>
+              {auth?.user?.address ? (
+                <>
+                  <div className="mb-3">
+                    <hr />
+                    <h4>Address:</h4>
+                    <h5>{auth?.user?.address}</h5>
+                  </div>
+                  <button className="btn btn-outline-warning">
+                    Update address
+                  </button>
+                  <button
+                    className="btn btn-outline-success ms-2"
+                    onClick={handlePurchase}
+                  >
+                    Purchase
+                  </button>
+                </>
+              ) : (
+                <div className="mb-3">
+                  {auth?.token ? (
+                    <button
+                      className="btn btn-outline-warning"
+                      onClick={() => navigate("/dashboard/user/profile")}
+                    >
+                      Add delivery address
+                    </button>
+                  ) : (
+                    <button
+                      className="btn btn-outline-danger mt-3"
+                      onClick={() =>
+                        navigate("/login", {
+                          state: "/cart",
+                        })
+                      }
+                    >
+                      Login to checkout
+                    </button>
+                  )}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       )}
