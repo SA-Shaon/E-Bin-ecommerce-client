@@ -6,6 +6,7 @@ import { BsPersonSlash, BsSearch, BsCart2 } from "react-icons/bs";
 import "./menulg.css";
 import Search from "../forms/Search";
 import { Badge } from "antd";
+import { TiThMenuOutline } from "react-icons/ti";
 
 const MenuLg = () => {
   //context
@@ -33,7 +34,7 @@ const MenuLg = () => {
             <img src="https://i.ibb.co/NxczK88/Funiro.png" alt="" />
           </NavLink>
         </li>
-        <li className="nav-item ">
+        <li className="nav-item nav-pages-lg">
           <NavLink className="me-5 nav-btn" to="/">
             Home
           </NavLink>
@@ -47,6 +48,29 @@ const MenuLg = () => {
             Contact
           </NavLink>
         </li>
+
+        <div className="user-container nav-page-sm">
+          <div className=" icon-sm">
+            <TiThMenuOutline size={30} />
+          </div>
+          <div className="user-dropdown">
+            <li className="user-item">
+              <NavLink className="me-5 nav-btn" to="/">
+                Home
+              </NavLink>
+              <NavLink className="me-5 nav-btn" to="/shop">
+                Shop
+              </NavLink>
+              <NavLink className="me-5 nav-btn" to="/about">
+                About
+              </NavLink>
+              <NavLink className=" nav-btn" to="/contact">
+                Contact
+              </NavLink>
+            </li>
+          </div>
+        </div>
+
         <li className="nav-item d-flex justify-content-between  align-items-center">
           {!auth?.user && (
             <NavLink to="/login" className="me-4">

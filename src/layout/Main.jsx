@@ -1,5 +1,4 @@
 import { Outlet } from "react-router-dom";
-import Menu from "../components/nav/Menu";
 import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "../context/auth";
 import { SearchProvider } from "../context/search";

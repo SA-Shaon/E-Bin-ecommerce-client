@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/auth";
 import { useCart } from "../context/cart";
 import Jumbotron from "../components/cards/Jumbotron";
@@ -12,6 +12,7 @@ const Cart = () => {
   const { auth } = useAuth();
   // hooks
   const navigate = useNavigate();
+  const location = useLocation();
 
   const removeFromCart = (productId) => {
     let myCart = [...cart];
@@ -75,7 +76,7 @@ const Cart = () => {
               ) : (
                 <div className="text-center">
                   <button
-                    onClick={() => navigate("/")}
+                    onClick={() => navigate("/shop")}
                     className="btn btn-primary"
                   >
                     Continue Shopping
@@ -177,7 +178,7 @@ const Cart = () => {
                       className="btn btn-outline-danger mt-3"
                       onClick={() =>
                         navigate("/login", {
-                          state: "/cart",
+                          state: { from: location },
                         })
                       }
                     >

@@ -34,7 +34,7 @@
   border: 1px solid #b88e2f;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   .home-header-text {
     width: 100%;
     left: 50%;

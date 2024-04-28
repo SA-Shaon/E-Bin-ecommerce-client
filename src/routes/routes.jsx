@@ -20,6 +20,8 @@ import CategoriesList from "../pages/CategoriesList";
 import CategoryView from "../pages/CategoryView";
 import Cart from "../pages/Cart";
 import Home from "../pages/home/Home";
+import AdminOrders from "../pages/admin/AdminOrders";
+import Contact from "../pages/contact/Contact";
 
 export const routes = createBrowserRouter([
   {
@@ -60,6 +62,10 @@ export const routes = createBrowserRouter([
         element: <Login />,
       },
       {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
         path: "register",
         element: <Register />,
       },
@@ -77,6 +83,10 @@ export const routes = createBrowserRouter([
               {
                 path: "product",
                 element: <AdminProduct />,
+              },
+              {
+                path: "orders",
+                element: <AdminOrders />,
               },
               {
                 path: "product/update/:slug",

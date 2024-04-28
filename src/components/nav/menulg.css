@@ -47,3 +47,24 @@ a {
 .nav-btn:hover {
   color: #b88e2f;
 }
+
+.nav-pages-lg {
+  @media only screen and (max-width: 780px) {
+    display: none;
+  }
+}
+
+.nav-page-sm {
+  @media only screen and (min-width: 780px) {
+    display: none;
+  }
+  .user-item > a {
+    display: flex;
+    flex-direction: column;
+    margin: 5px 0;
+  }
+  .icon-sm {
+    cursor: pointer;
+    padding: 12px;
+  }
+}

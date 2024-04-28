@@ -2,12 +2,20 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../../context/auth";
 import axios from "axios";
 import moment from "moment";
+import { Select } from "antd";
 
-const UserOrders = () => {
+const AdminOrders = () => {
   // context
   const { auth } = useAuth();
   //state
   const [orders, setOrders] = useState([]);
+  const status = [
+    "Not processed",
+    "Processing",
+    "Shipped",
+    "Devlivered",
+    "Cancelled",
+  ];
 
   useEffect(() => {
     if (auth?.token) getOrders();
@@ -15,8 +23,22 @@ const UserOrders = () => {
 
   const getOrders = async () => {
     try {
-      const { data } = await axios.get(`${import.meta.env.VITE_API}/orders`);
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_API}/all-orders`
+      );
       setOrders(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleChange = async (orderId, value) => {
+    try {
+      const { data } = await axios.put(
+        `${import.meta.env.VITE_API}/order-status/${orderId}`,
+        { status: value }
+      );
+      getOrders();
     } catch (err) {
       console.log(err);
     }
@@ -42,7 +64,19 @@ const UserOrders = () => {
               <tbody>
                 <tr>
                   <td>{i + 1}</td>
-                  <td>{o?.status} </td>
+                  <td>
+                    <Select
+                      bordered={false}
+                      onChange={(value) => handleChange(o._id, value)}
+                      defaultValue={o?.status}
+                    >
+                      {status.map((s, i) => (
+                        <Select.Option key={i} value={s}>
+                          {s}
+                        </Select.Option>
+                      ))}
+                    </Select>
+                  </td>
                   <td>{o?.buyer?.name}</td>
                   <td> {moment(o?.createdAt).fromNow()} </td>
                   <td>Success</td>
@@ -57,4 +91,4 @@ const UserOrders = () => {
   );
 };
 
-export default UserOrders;
+export default AdminOrders;

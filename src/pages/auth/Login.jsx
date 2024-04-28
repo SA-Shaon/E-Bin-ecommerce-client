@@ -10,7 +10,6 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
-
   //hook
   const { auth, setAuth } = useAuth();
 
@@ -27,7 +26,7 @@ const Login = () => {
         localStorage.setItem("auth", JSON.stringify(data));
         setAuth({ ...auth, token: data.token, user: data.user });
         toast.success("Login successfully.");
-        navigate(location?.state || "/");
+        navigate(location.state?.from?.pathname || "/");
       }
     } catch (err) {
       console.log(err.message);
