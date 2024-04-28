@@ -7,7 +7,7 @@ const Contact = () => {
     <div className="">
       <Jumbotron title="Contact" subTitle="Welcome to React E-commerce" />
       <div className="container">
-        <div className="d-flex flex-column text-center justify-content-center mb-4 mt-4 ">
+        <div className="d-flex flex-column text-center justify-content-center mb-5 mt-5 ">
           <h3>Get In Touch With Us</h3>
           <p className="text-secondary">
             For More Information About Our Product & Services. Please Feel Free
@@ -18,8 +18,8 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="row">
-          <div className="col-sm-12 col-md-6 d-flex flex-column align-items-center justify-content-center">
+        <div className="row mt-5">
+          <div className="col-sm-12 col-md-6 d-flex flex-column align-items-center ">
             <div>
               <div className="d-flex align-content-center">
                 <FaLocationDot size={20} className="align-self-center" />
