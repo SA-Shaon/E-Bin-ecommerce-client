@@ -63,7 +63,7 @@ const Cart = () => {
             ? `You have ${cart?.length} items in the cart. ${
                 auth?.token ? " " : " Please login to checkout."
               }`
-            : "Your cart is empty"
+            : "Your cart is fully empty"
         }
       />
 
