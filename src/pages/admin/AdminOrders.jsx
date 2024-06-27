@@ -3,6 +3,7 @@ import { useAuth } from "../../context/auth";
 import axios from "axios";
 import moment from "moment";
 import { Select } from "antd";
+import toast from "react-hot-toast";
 
 const AdminOrders = () => {
   // context
@@ -38,6 +39,7 @@ const AdminOrders = () => {
         `${import.meta.env.VITE_API}/order-status/${orderId}`,
         { status: value }
       );
+      toast.success("Status Updated");
       getOrders();
     } catch (err) {
       console.log(err);

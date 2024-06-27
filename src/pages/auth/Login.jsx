@@ -3,13 +3,12 @@ import Jumbotron from "../../components/cards/Jumbotron";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useAuth } from "../../context/auth";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const location = useLocation();
   //hook
   const { auth, setAuth } = useAuth();
 
@@ -26,7 +25,7 @@ const Login = () => {
         localStorage.setItem("auth", JSON.stringify(data));
         setAuth({ ...auth, token: data.token, user: data.user });
         toast.success("Login successfully.");
-        navigate(location.state?.from?.pathname || "/");
+        navigate("/");
       }
     } catch (err) {
       console.log(err.message);
@@ -59,7 +58,14 @@ const Login = () => {
                 required
               />
               <button className="btn btn-primary">Submit</button>
+              <Link to={"/register"} className="text-danger ms-5">
+                Not a user?
+              </Link>
             </form>
+          </div>
+          <div className="mt-5">
+            <p>admin = Email: shaon@gmail.com | pw: 123456 </p>
+            <p>User = Email: xyz@gmail.com | pw: 123456 </p>
           </div>
         </div>
       </div>
