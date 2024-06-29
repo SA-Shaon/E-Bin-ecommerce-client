@@ -8,59 +8,60 @@ import {
   BsPatchCheck,
   BsLightning,
 } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   // state
   const [products, setProducts] = useState([]);
-  const [total, setTotal] = useState(0);
-  const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(false);
+  // const [total, setTotal] = useState(0);
+  // const [page, setPage] = useState(1);
+  // const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     loadProducts();
-    getTotal();
+    // getTotal();
   }, []);
 
-  useEffect(() => {
-    if (page === 1) return;
-    loadMore();
-  }, [page]);
+  // useEffect(() => {
+  //   if (page === 1) return;
+  //   loadMore();
+  // }, [page]);
 
-  const getTotal = async () => {
-    try {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_API}/products-count`
-      );
-      setTotal(data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const getTotal = async () => {
+  //   try {
+  //     const { data } = await axios.get(
+  //       `${import.meta.env.VITE_API}/products-count`
+  //     );
+  //     setTotal(data);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   const loadProducts = async () => {
     try {
       const { data } = await axios.get(
-        `${import.meta.env.VITE_API}/list-products/${page}`
+        `${import.meta.env.VITE_API}/list-products/${1}`
       );
-      setProducts(data);
+      setProducts(data?.slice(0, 4));
     } catch (err) {
       console.log(err);
     }
   };
 
-  const loadMore = async () => {
-    try {
-      setLoading(true);
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_API}/list-products/${page}`
-      );
-      setProducts([...products, ...data]);
-      setLoading(false);
-    } catch (err) {
-      console.log(err);
-      setLoading(false);
-    }
-  };
+  // const loadMore = async () => {
+  //   try {
+  //     setLoading(true);
+  //     const { data } = await axios.get(
+  //       `${import.meta.env.VITE_API}/list-products/${page}`
+  //     );
+  //     setProducts([...products, ...data]);
+  //     setLoading(false);
+  //   } catch (err) {
+  //     console.log(err);
+  //     setLoading(false);
+  //   }
+  // };
 
   // const arr = [...products];
   // const sortedBySold = arr?.sort((a, b) => (a.sold < b.sold ? 1 : -1));
@@ -146,7 +147,7 @@ const Home = () => {
           ))}
         </div>
         <div className="text-center p-5">
-          {products && products.length < total && (
+          {/* {products && products.length < total && (
             <button
               className="home-btn2 "
               disabled={loading}
@@ -157,7 +158,10 @@ const Home = () => {
             >
               {loading ? "Loading.." : "Load more"}
             </button>
-          )}
+          )} */}
+          <Link to="/shop">
+            <button className="home-btn2 ">Continue Shoping</button>
+          </Link>
         </div>
       </div>
 

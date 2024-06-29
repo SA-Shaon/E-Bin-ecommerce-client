@@ -19,9 +19,9 @@ const Contact = () => {
         </div>
 
         <div className="row mt-5">
-          <div className="col-sm-12 col-md-6 d-flex flex-column align-items-center ">
+          <div className="col-sm-12 col-md-6 d-flex  align-items-center justify-content-center">
             <div>
-              <div className="d-flex align-content-center">
+              <div className="d-flex">
                 <FaLocationDot size={20} className="align-self-center" />
                 <div className="ms-3">
                   <h5 className="mb-0">Address</h5>

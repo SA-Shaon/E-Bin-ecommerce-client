@@ -73,6 +73,16 @@ const Shop = () => {
     }
     setChecked(all);
   };
+
+  const itemsPerPage = 8;
+  const [itemOffset, setItemOffset] = useState(0);
+  const endOffset = itemOffset + itemsPerPage;
+  const currentItems = products.slice(itemOffset, endOffset);
+  const pageCount = Math.ceil(products.length / itemsPerPage);
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * itemsPerPage) % products.length;
+    setItemOffset(newOffset);
+  };
   return (
     <>
       <Jumbotron title="Hello World" subTitle="Welcome to React E-commerce" />
@@ -138,7 +148,7 @@ const Shop = () => {
           ) : (
             <>
               <div className="row">
-                {products?.slice(0, 5).map((p) => (
+                {currentItems?.map((p) => (
                   <div className="col-md-3" key={p._id}>
                     <ProductCard p={p} />
                   </div>
@@ -154,10 +164,8 @@ const Shop = () => {
           breakLabel="..."
           breakClassName="page-item"
           breakLinkClassName="page-link"
-          pageCount={products.length / 8}
-          pageRangeDisplayed={4}
-          marginPagesDisplayed={2}
-          // onPageChange={this.handlePageClick}
+          pageCount={pageCount}
+          onPageChange={handlePageClick}
           containerClassName="pagination justify-content-center"
           pageClassName="page-item"
           pageLinkClassName="page-link"
@@ -166,20 +174,6 @@ const Shop = () => {
           nextClassName="page-item"
           nextLinkClassName="page-link"
           activeClassName="active outline-0"
-          // eslint-disable-next-line no-unused-vars
-          hrefBuilder={(page, pageCount, selected) =>
-            page >= 1 && page <= pageCount ? `/page/${page}` : "#"
-          }
-          hrefAllControls
-          forcePage={1}
-          onClick={(clickEvent) => {
-            console.log("onClick", clickEvent);
-            // Return false to prevent standard page change,
-            // return false; // --> Will do nothing.
-            // return a number to choose the next page,
-            // return 4; --> Will go to page 5 (index 4)
-            // return nothing (undefined) to let standard behavior take place.
-          }}
         />
       </div>
     </>
