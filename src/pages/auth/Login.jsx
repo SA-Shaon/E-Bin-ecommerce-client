@@ -58,8 +58,10 @@ const Login = () => {
                 required
               />
               <button className="btn btn-primary">Submit</button>
-              <Link to={"/register"} className="text-danger ms-5">
-                Not a user?
+              <Link to={"/register"} className=" ms-2">
+                <button type="button" className="btn btn-danger">
+                  Not a User?
+                </button>
               </Link>
             </form>
           </div>

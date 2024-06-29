@@ -10,6 +10,7 @@
 }
 .aDesign:hover {
   color: #b88e2f;
+  display: inline-block;
 }
 
 .commonColor {

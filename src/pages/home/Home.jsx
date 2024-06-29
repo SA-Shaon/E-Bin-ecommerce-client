@@ -13,30 +13,10 @@ import { Link } from "react-router-dom";
 const Home = () => {
   // state
   const [products, setProducts] = useState([]);
-  // const [total, setTotal] = useState(0);
-  // const [page, setPage] = useState(1);
-  // const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     loadProducts();
-    // getTotal();
   }, []);
-
-  // useEffect(() => {
-  //   if (page === 1) return;
-  //   loadMore();
-  // }, [page]);
-
-  // const getTotal = async () => {
-  //   try {
-  //     const { data } = await axios.get(
-  //       `${import.meta.env.VITE_API}/products-count`
-  //     );
-  //     setTotal(data);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
 
   const loadProducts = async () => {
     try {
@@ -49,22 +29,6 @@ const Home = () => {
     }
   };
 
-  // const loadMore = async () => {
-  //   try {
-  //     setLoading(true);
-  //     const { data } = await axios.get(
-  //       `${import.meta.env.VITE_API}/list-products/${page}`
-  //     );
-  //     setProducts([...products, ...data]);
-  //     setLoading(false);
-  //   } catch (err) {
-  //     console.log(err);
-  //     setLoading(false);
-  //   }
-  // };
-
-  // const arr = [...products];
-  // const sortedBySold = arr?.sort((a, b) => (a.sold < b.sold ? 1 : -1));
   return (
     <div>
       {/* Header section  */}
@@ -81,7 +45,9 @@ const Home = () => {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
             tellus, luctus nec ullamcorper mattis.
           </p>
-          <button className="home-btn">BUY NOW</button>
+          <Link to={"/shop"}>
+            <button className="home-btn">BUY NOW</button>
+          </Link>
         </div>
       </section>
 

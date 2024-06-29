@@ -11,7 +11,7 @@ const Footer = () => {
     <section className={style.footerbg}>
       <div className="container  p-3 pt-5">
         <div className="row g-3 ">
-          <div className="col-12 col-md-3">
+          <div className="col-6 col-md-3">
             <img
               className="mb-5"
               src="https://i.ibb.co/NxczK88/Funiro.png"
@@ -21,7 +21,7 @@ const Footer = () => {
               400 University Drive Suite 200 Coral Gables, FL 33134 USA
             </p>
           </div>
-          <div className="col-12 col-md-3 ">
+          <div className="col-6 col-md-3 ">
             <p className={style.commonColor}>Links</p>
             <a className={style.aDesign} href="#">
               Home
@@ -36,7 +36,7 @@ const Footer = () => {
               Contact
             </a>
           </div>
-          <div className="col-12 col-md-3 ">
+          <div className="col-6 col-md-3 ">
             <p className={style.commonColor}>Help</p>
             <a className={style.aDesign} href="#">
               Payment Options
@@ -48,7 +48,7 @@ const Footer = () => {
               Privacy Policies
             </a>
           </div>
-          <div className="col-12 col-md-3 ">
+          <div className="col-6 col-md-3 ">
             <p className={style.commonColor}>Newsletter</p>
             <form onSubmit={handleSubscribe}>
               <input
