@@ -23,7 +23,7 @@ const Home = () => {
       const { data } = await axios.get(
         `${import.meta.env.VITE_API}/list-products/${1}`
       );
-      setProducts(data?.slice(0, 4));
+      setProducts(data?.slice(0, 12));
     } catch (err) {
       console.log(err);
     }
