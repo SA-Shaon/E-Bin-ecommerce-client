@@ -35,7 +35,7 @@ const UserOrders = () => {
                   <th scope="col">Status</th>
                   <th scope="col">Buyer</th>
                   <th scope="col">Ordered</th>
-                  <th scope="col">Payment</th>
+                  <th scope="col">TransactionID</th>
                   <th scope="col">Quantity</th>
                 </tr>
               </thead>
@@ -45,7 +45,7 @@ const UserOrders = () => {
                   <td>{o?.status} </td>
                   <td>{o?.buyer?.name}</td>
                   <td> {moment(o?.createdAt).fromNow()} </td>
-                  <td>Success</td>
+                  <td> {o?.paymentIntent?.id ?? "Unpaid"} </td>
                   <td>{o?.products?.length} products</td>
                 </tr>
               </tbody>

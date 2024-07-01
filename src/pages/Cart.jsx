@@ -3,8 +3,7 @@ import { useAuth } from "../context/auth";
 import { useCart } from "../context/cart";
 import Jumbotron from "../components/cards/Jumbotron";
 import moment from "moment";
-import axios from "axios";
-import toast from "react-hot-toast";
+import Payment from "../components/payment/Payment";
 
 const Cart = () => {
   //context
@@ -27,31 +26,7 @@ const Cart = () => {
     cart.map((item) => {
       total += item.price;
     });
-    return total.toLocaleString("en-US", {
-      style: "currency",
-      currency: "USD",
-    });
-  };
-
-  const handlePurchase = async () => {
-    try {
-      const { data } = await axios.post(
-        `${import.meta.env.VITE_API}/order/newTransaction`,
-        {
-          cart,
-        }
-      );
-      if (data?.error) {
-        toast.error(data.error);
-      } else {
-        setCart([]);
-        localStorage.removeItem("cart");
-        navigate("/dashboard/user/orders");
-        toast.success("Purchased Successful.");
-      }
-    } catch (err) {
-      console.log(err);
-    }
+    return total;
   };
 
   return (
@@ -142,51 +117,46 @@ const Cart = () => {
                 </div>
               ))}
             </div>
-            <div className="col-md-4">
-              <h4>Your cart summary</h4>
-              Total / Address / Payments
-              <hr />
-              <h6>Total: {cartTotal()}</h6>
-              {auth?.user?.address ? (
-                <>
+            <div className="col-md-4  mt-2">
+              <div>
+                <h4>Your cart summary</h4>
+                Total / Address / Payments
+                <hr />
+                <h6 className="mb-4">
+                  Total:{" "}
+                  {cartTotal().toLocaleString("en-US", {
+                    style: "currency",
+                    currency: "USD",
+                  })}
+                </h6>
+                {auth?.user?.address ? (
+                  <>
+                    <Payment price={cartTotal()} />
+                  </>
+                ) : (
                   <div className="mb-3">
-                    <hr />
-                    <h4>Address:</h4>
-                    <h5>{auth?.user?.address}</h5>
+                    {auth?.token ? (
+                      <button
+                        className="btn btn-outline-warning"
+                        onClick={() => navigate("/dashboard/user/profile")}
+                      >
+                        Add delivery address
+                      </button>
+                    ) : (
+                      <button
+                        className="btn btn-outline-danger mt-3"
+                        onClick={() =>
+                          navigate("/login", {
+                            state: { from: location },
+                          })
+                        }
+                      >
+                        Login to checkout
+                      </button>
+                    )}
                   </div>
-                  <button className="btn btn-outline-warning">
-                    Update address
-                  </button>
-                  <button
-                    className="btn btn-outline-success ms-2"
-                    onClick={handlePurchase}
-                  >
-                    Purchase
-                  </button>
-                </>
-              ) : (
-                <div className="mb-3">
-                  {auth?.token ? (
-                    <button
-                      className="btn btn-outline-warning"
-                      onClick={() => navigate("/dashboard/user/profile")}
-                    >
-                      Add delivery address
-                    </button>
-                  ) : (
-                    <button
-                      className="btn btn-outline-danger mt-3"
-                      onClick={() =>
-                        navigate("/login", {
-                          state: { from: location },
-                        })
-                      }
-                    >
-                      Login to checkout
-                    </button>
-                  )}
-                </div>
-              )}
+                )}
+              </div>
             </div>
           </div>
         </div>
