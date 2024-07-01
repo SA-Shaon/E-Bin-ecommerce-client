@@ -149,7 +149,7 @@ const Shop = () => {
             <>
               <div className="row">
                 {currentItems?.map((p) => (
-                  <div className="col-md-3" key={p._id}>
+                  <div className="col-xl-3 col-lg-4 col-md-6 " key={p._id}>
                     <ProductCard p={p} />
                   </div>
                 ))}

@@ -31,7 +31,11 @@ const MenuLg = () => {
               src="https://i.ibb.co/r4dQhXH/logo.png"
               alt=""
             />
-            <img src="https://i.ibb.co/NxczK88/Funiro.png" alt="" />
+            <img
+              className="d-none d-sm-block"
+              src="https://i.ibb.co/NxczK88/Funiro.png"
+              alt=""
+            />
           </NavLink>
         </li>
         <li className="nav-item nav-pages-lg">

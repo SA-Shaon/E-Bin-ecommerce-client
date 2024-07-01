@@ -107,7 +107,7 @@ const Home = () => {
         <h5 className="p-3 my-2  text-color-primary">New Arrivals</h5>
         <div className="row g-3">
           {products?.map((p) => (
-            <div key={p._id} className="col-lg-3 col-12 col-md-4">
+            <div key={p._id} className="col-xl-3 col-lg-4 col-md-6">
               <ProductCard key={p._id} p={p} />
             </div>
           ))}
