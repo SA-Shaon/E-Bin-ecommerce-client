@@ -57,7 +57,7 @@ const ProductView = () => {
   return (
     <div className="container-fluid">
       <div className="row">
-        <div className="col-md-9">
+        <div className="col-lg-9 col-md-7">
           <div className="card mb-3">
             <Badge.Ribbon text={`${product?.sold} sold`} color="red">
               <Badge.Ribbon
@@ -87,7 +87,7 @@ const ProductView = () => {
             <div className="d-flex justify-conten-between lead p-5 bg-light fw-bold">
               <div>
                 <p>
-                  <FaDollarSign /> Price:{" "}
+                  <FaDollarSign /> Price:
                   {product?.price?.toLocaleString("bn-BD", {
                     style: "currency",
                     currency: "BDT",
@@ -128,7 +128,7 @@ const ProductView = () => {
             </button>
           </div>
         </div>
-        <div className="col-md-3">
+        <div className="col-lg-3 col-md-5">
           <h3 className="text-center">Related Products</h3> <hr />
           {related?.map((p) => (
             <ProductCard p={p} key={p._id} />
