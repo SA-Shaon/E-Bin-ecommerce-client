@@ -74,7 +74,7 @@ const Shop = () => {
     setChecked(all);
   };
 
-  const itemsPerPage = 8;
+  const itemsPerPage = 12;
   const [itemOffset, setItemOffset] = useState(0);
   const endOffset = itemOffset + itemsPerPage;
   const currentItems = products.slice(itemOffset, endOffset);

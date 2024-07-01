@@ -20,9 +20,7 @@ const Home = () => {
 
   const loadProducts = async () => {
     try {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_API}/list-products/${1}`
-      );
+      const { data } = await axios.get(`${import.meta.env.VITE_API}/products`);
       setProducts(data?.slice(0, 12));
     } catch (err) {
       console.log(err);
