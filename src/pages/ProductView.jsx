@@ -57,7 +57,7 @@ const ProductView = () => {
   return (
     <div className="container-fluid">
       <div className="row">
-        <div className="col-xl-9 col-md-8">
+        <div className="col-xl-9 col-lg-8 col-md-7 ">
           <div className="card mb-3">
             <Badge.Ribbon text={`${product?.sold} sold`} color="red">
               <Badge.Ribbon
@@ -128,7 +128,7 @@ const ProductView = () => {
             </button>
           </div>
         </div>
-        <div className="col-xl-3 col-md-4">
+        <div className="col-xl-3 col-lg-4 col-md-5">
           <h3 className="text-center">Related Products</h3> <hr />
           {related?.map((p) => (
             <ProductCard p={p} key={p._id} />
