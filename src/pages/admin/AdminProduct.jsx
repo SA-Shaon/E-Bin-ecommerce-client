@@ -19,7 +19,7 @@ const AdminProduct = () => {
   const [name, setname] = useState("");
   const [description, setdescription] = useState("");
   const [price, setprice] = useState("");
-  const [shipping, setshipping] = useState(true);
+  const [machineNum, setMachineNum] = useState("");
   const [quantity, setquantity] = useState("");
 
   const loadCategories = async () => {
@@ -53,7 +53,7 @@ const AdminProduct = () => {
       productData.append("name", name);
       productData.append("description", description);
       productData.append("category", category);
-      productData.append("shipping", shipping);
+      productData.append("machine", machineNum);
       productData.append("quantity", quantity);
       productData.append("price", price);
       console.log([...productData]);
@@ -149,16 +149,16 @@ const AdminProduct = () => {
       />
       <Select
         showSearch
-        defaultValue="Yes"
+        defaultValue="Machine 1"
         options={[
-          { label: "Yes", value: true },
-          { label: "No", value: false },
+          { label: "Machine 1", value: 1 },
+          { label: "Machine 2", value: 2 },
         ]}
         bordered={false}
         size="large"
         className="form-select mb-3"
-        placeholder="Choose Shipping"
-        onChange={(value) => setshipping(value)}
+        placeholder="Choose Machine"
+        onChange={(value) => setMachineNum(value)}
       />
 
       <input

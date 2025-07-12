@@ -33,7 +33,7 @@ a {
   position: absolute;
   transition: position 1s ease-in;
 
-  right: -80px;
+  right: -50px;
   background-color: white;
   display: none;
   border-radius: 5px;

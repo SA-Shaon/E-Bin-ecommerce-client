@@ -32,21 +32,21 @@ const UserOrders = () => {
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">Status</th>
+                  {/* <th scope="col">Status</th> */}
                   <th scope="col">Buyer</th>
                   <th scope="col">Ordered</th>
                   <th scope="col">TransactionID</th>
-                  <th scope="col">Quantity</th>
+                  {/* <th scope="col">Quantity</th> */}
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>{i + 1}</td>
-                  <td>{o?.status} </td>
+                  {/* <td>{o?.status} </td> */}
                   <td>{o?.buyer?.name}</td>
                   <td> {moment(o?.createdAt).fromNow()} </td>
                   <td> {o?.paymentIntent?.id ?? "Unpaid"} </td>
-                  <td>{o?.products?.length} products</td>
+                  {/* <td>{o?.products?.length} products</td> */}
                 </tr>
               </tbody>
             </table>

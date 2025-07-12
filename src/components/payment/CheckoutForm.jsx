@@ -5,13 +5,24 @@ import { useAuth } from "../../context/auth";
 import { useCart } from "../../context/cart";
 import { useNavigate } from "react-router-dom";
 
-const CheckoutForm = ({ price }) => {
+const CheckoutForm = ({ price, machine }) => {
   const stripe = useStripe();
   const elements = useElements();
 
   const { auth } = useAuth();
   const { cart, setCart } = useCart();
   const navigate = useNavigate();
+
+  // handle vending machine command
+  const handleVendingMachine = async (motor) => {
+    try {
+      console.log(motor);
+      const data = await axios.get(`http://10.19.2.29/motor${motor}/cw`);
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const handleSubmit = async (event) => {
     // Block native form submission.
@@ -84,10 +95,11 @@ const CheckoutForm = ({ price }) => {
           if (data?.error) {
             toast.error(data.error);
           } else {
+            handleVendingMachine(machine);
             setCart([]);
             localStorage.removeItem("cart");
-            navigate("/dashboard/user/orders");
-            toast.success("Purchased Successful.");
+            navigate("/");
+            toast.success("Collect you Product From vending Machine");
           }
         } catch (err) {
           console.log(err);

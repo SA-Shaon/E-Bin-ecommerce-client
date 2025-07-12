@@ -2,21 +2,21 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../../context/auth";
 import axios from "axios";
 import moment from "moment";
-import { Select } from "antd";
-import toast from "react-hot-toast";
+// import { Select } from "antd";
+// import toast from "react-hot-toast";
 
 const AdminOrders = () => {
   // context
   const { auth } = useAuth();
   //state
   const [orders, setOrders] = useState([]);
-  const status = [
-    "Not processed",
-    "Processing",
-    "Shipped",
-    "Devlivered",
-    "Cancelled",
-  ];
+  // const status = [
+  //   "Not processed",
+  //   "Processing",
+  //   "Shipped",
+  //   "Devlivered",
+  //   "Cancelled",
+  // ];
 
   useEffect(() => {
     if (auth?.token) getOrders();
@@ -33,18 +33,18 @@ const AdminOrders = () => {
     }
   };
 
-  const handleChange = async (orderId, value) => {
-    try {
-      const { data } = await axios.put(
-        `${import.meta.env.VITE_API}/order-status/${orderId}`,
-        { status: value }
-      );
-      toast.success("Status Updated");
-      getOrders();
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const handleChange = async (orderId, value) => {
+  //   try {
+  //     const { data } = await axios.put(
+  //       `${import.meta.env.VITE_API}/order-status/${orderId}`,
+  //       { status: value }
+  //     );
+  //     toast.success("Status Updated");
+  //     getOrders();
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
   return (
     <div>
       <h4 className="p-3 mt-2 mb-2 bg-light">Orders</h4>
@@ -56,17 +56,17 @@ const AdminOrders = () => {
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">Status</th>
+                  {/* <th scope="col">Status</th> */}
                   <th scope="col">Buyer</th>
                   <th scope="col">Ordered</th>
                   <th scope="col">TransactionID</th>
-                  <th scope="col">Quantity</th>
+                  {/* <th scope="col">Quantity</th> */}
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>{i + 1}</td>
-                  <td>
+                  {/* <td>
                     <Select
                       bordered={false}
                       onChange={(value) => handleChange(o._id, value)}
@@ -78,11 +78,11 @@ const AdminOrders = () => {
                         </Select.Option>
                       ))}
                     </Select>
-                  </td>
+                  </td> */}
                   <td>{o?.buyer?.name}</td>
                   <td> {moment(o?.createdAt).fromNow()} </td>
                   <td>{o?.paymentIntent?.id}</td>
-                  <td>{o?.products?.length} products</td>
+                  {/* <td>{o?.products?.length} products</td> */}
                 </tr>
               </tbody>
             </table>

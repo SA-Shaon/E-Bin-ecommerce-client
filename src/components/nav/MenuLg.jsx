@@ -1,17 +1,18 @@
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../../context/auth";
-import { useCart } from "../../context/cart";
+// import { useCart } from "../../context/cart";
 import toast from "react-hot-toast";
-import { BsPersonSlash, BsSearch, BsCart2 } from "react-icons/bs";
+import { BsPersonSlash, BsSearch } from "react-icons/bs";
 import "./menulg.css";
-import Search from "../forms/Search";
-import { Badge } from "antd";
+// import Search from "../forms/Search";
+// import { Badge } from "antd";
 import { TiThMenuOutline } from "react-icons/ti";
+import Search from "antd/es/input/Search";
 
 const MenuLg = () => {
   //context
   const { auth, setAuth } = useAuth();
-  const { cart } = useCart();
+  // const { cart } = useCart();
 
   const logout = () => {
     localStorage.removeItem("auth");
@@ -45,9 +46,9 @@ const MenuLg = () => {
           <NavLink className="me-5 nav-btn" to="/shop">
             Shop
           </NavLink>
-          <NavLink className="me-5 nav-btn" to="/about">
+          {/* <NavLink className="me-5 nav-btn" to="/about">
             About
-          </NavLink>
+          </NavLink> */}
           <NavLink className=" nav-btn" to="/contact">
             Contact
           </NavLink>
@@ -65,9 +66,9 @@ const MenuLg = () => {
               <NavLink className="me-5 nav-btn" to="/shop">
                 Shop
               </NavLink>
-              <NavLink className="me-5 nav-btn" to="/about">
+              {/* <NavLink className="me-5 nav-btn" to="/about">
                 About
-              </NavLink>
+              </NavLink> */}
               <NavLink className=" nav-btn" to="/contact">
                 Contact
               </NavLink>
@@ -82,9 +83,9 @@ const MenuLg = () => {
             </NavLink>
           )}
           {auth?.user && (
-            <div className="user-container">
+            <div className="user-container me-4">
               <div
-                className="me-4 profileImg"
+                className=" profileImg"
                 style={{ width: "45px", height: "45px" }}
               >
                 <img
@@ -116,7 +117,7 @@ const MenuLg = () => {
               </div>
             </div>
           )}
-          <div className="me-4 pointer search-container p-100">
+          <div className="me-4 pointer search-container p-100 ">
             <BsSearch style={{ fontSize: "25px" }} />
             <div className="search-dropdown">
               <div className="search-item d-flex justify-content-between  align-items-center">
@@ -124,7 +125,7 @@ const MenuLg = () => {
               </div>
             </div>
           </div>
-          <div className="me-4">
+          {/* <div className="me-4">
             <Badge
               count={cart?.length}
               offset={[-1, 0]}
@@ -135,7 +136,7 @@ const MenuLg = () => {
                 <BsCart2 className=" nav-btn" style={{ fontSize: "25px" }} />
               </NavLink>
             </Badge>
-          </div>
+          </div> */}
         </li>
       </ul>
     </div>

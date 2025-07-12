@@ -1,7 +1,7 @@
 import { Badge } from "antd";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   FaCheck,
   FaDiagramProject,
@@ -12,18 +12,19 @@ import {
   FaWarehouse,
 } from "react-icons/fa6";
 import moment from "moment";
-import ProductCard from "../components/cards/ProductCard";
-import { useCart } from "../context/cart";
-import toast from "react-hot-toast";
+import { useAuth } from "../context/auth";
+import Payment from "../components/payment/Payment";
 
 const ProductView = () => {
   // context
-  const { cart, setCart } = useCart();
+  // const { cart, setCart } = useCart();
+  const navigate = useNavigate();
+  const { auth } = useAuth();
 
   const { slug } = useParams();
 
   const [product, setProduct] = useState({});
-  const [related, setRelated] = useState([]);
+  // const [related, setRelated] = useState([]);
 
   useEffect(() => {
     if (slug) loadProduct();
@@ -35,20 +36,6 @@ const ProductView = () => {
         `${import.meta.env.VITE_API}/product/${slug}`
       );
       setProduct(data);
-      loadRelatedProducts(data._id, data.category._id);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const loadRelatedProducts = async (productId, categoryId) => {
-    try {
-      const { data } = await axios.get(
-        `${
-          import.meta.env.VITE_API
-        }/related-products/${productId}/${categoryId}`
-      );
-      setRelated(data);
     } catch (err) {
       console.log(err);
     }
@@ -115,24 +102,38 @@ const ProductView = () => {
                 </p>
               </div>
             </div>
-
-            <button
-              style={{ borderBottomRightRadius: "5px" }}
-              className="btn btn-outline-primary col card-button"
-              onClick={() => {
-                setCart([...cart, product]);
-                toast.success("Added to Cart");
-              }}
-            >
-              Add to Cart
-            </button>
           </div>
         </div>
         <div className="col-xl-3 col-lg-4 col-md-5">
-          <h3 className="text-center">Related Products</h3> <hr />
-          {related?.map((p) => (
-            <ProductCard p={p} key={p._id} />
-          ))}
+          <div className="mt-5">
+            <h4>Your Payment</h4>
+            <hr />
+            <h6 className="mb-4">
+              Total:
+              {product?.price?.toLocaleString("en-US", {
+                style: "currency",
+                currency: "USD",
+              })}
+            </h6>
+            {auth?.user?.address ? (
+              <>
+                <Payment price={product?.price} machine={product?.machine} />
+              </>
+            ) : (
+              <div className="mb-3">
+                {auth?.token ? (
+                  ""
+                ) : (
+                  <button
+                    className="btn btn-outline-danger mt-3"
+                    onClick={() => navigate("/login")}
+                  >
+                    Login to checkout
+                  </button>
+                )}
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

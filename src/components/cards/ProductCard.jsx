@@ -1,13 +1,13 @@
 import { Badge } from "antd";
 import { useNavigate } from "react-router-dom";
-import { useCart } from "../../context/cart";
-import toast from "react-hot-toast";
+// import { useCart } from "../../context/cart";
+// import toast from "react-hot-toast";
 import moment from "moment";
 import "./pCard.css";
 
 const ProductCard = ({ p }) => {
   //context
-  const { cart, setCart } = useCart();
+  // const { cart, setCart } = useCart();
 
   const navigate = useNavigate();
   return (
@@ -44,17 +44,17 @@ const ProductCard = ({ p }) => {
             createdAt: {moment(p?.createdAt).fromNow()}
           </small>
         </div>
-        <p className="card-text">{p?.description?.substring(0, 60)}...</p>
+        {/* <p className="card-text">{p?.description?.substring(0, 60)}...</p> */}
       </div>
       <div className="d-flex ">
         <button
           style={{ borderBottomLeftRadius: "5px" }}
-          className="pCard-btn w-50"
+          className="pCard-btn w-100"
           onClick={() => navigate(`/product/${p?.slug}`)}
         >
-          View Product
+          Buy Product
         </button>
-        <button
+        {/* <button
           style={{ borderBottomRightRadius: "5px" }}
           className="pCard-btn2 w-50 "
           onClick={() => {
@@ -64,7 +64,7 @@ const ProductCard = ({ p }) => {
           }}
         >
           Add to Cart
-        </button>
+        </button> */}
       </div>
     </div>
   );

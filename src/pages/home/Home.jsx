@@ -61,36 +61,36 @@ const Home = () => {
             <div className="card" style={{ height: "400px" }}>
               <img
                 style={{ width: "100%", height: "100%" }}
-                src="https://i.ibb.co/m5hWM90/Dining.png"
+                src="https://i.ibb.co/Hs8Sxyc/Main-product37-768x864.jpg"
                 alt=""
               />
             </div>
             <h5 className="pt-2">
-              <b>Dining</b>
+              <b>Cookies </b>
             </h5>
           </div>
           <div className="col">
             <div className="card" style={{ height: "400px" }}>
               <img
                 style={{ width: "100%", height: "100%" }}
-                src="https://i.ibb.co/YRmnp56/Living.png"
+                src="https://i.ibb.co/0VBTXkJG/Main-product35-768x864.jpg"
                 alt=""
               />
             </div>
             <h5 className="pt-2">
-              <b>Living</b>
+              <b>Dried fruit snacks</b>
             </h5>
           </div>
           <div className="col">
             <div className="card" style={{ height: "400px" }}>
               <img
                 style={{ width: "100%", height: "100%" }}
-                src="https://i.ibb.co/7CsVdw7/Bedroom.png"
+                src="https://i.ibb.co/CpYZt0S0/Main-product40-768x864.jpg"
                 alt=""
               />
             </div>
             <h5 className="pt-2">
-              <b>Bedroom</b>
+              <b>Potato chips</b>
             </h5>
           </div>
         </div>
@@ -111,151 +111,12 @@ const Home = () => {
           ))}
         </div>
         <div className="text-center p-5">
-          {/* {products && products.length < total && (
-            <button
-              className="home-btn2 "
-              disabled={loading}
-              onClick={(e) => {
-                e.preventDefault();
-                setPage(page + 1);
-              }}
-            >
-              {loading ? "Loading.." : "Load more"}
-            </button>
-          )} */}
           <Link to="/shop">
             <button className="home-btn2 ">Continue Shoping</button>
           </Link>
         </div>
       </div>
 
-      <section className="explore-bg">
-        <div className="container">
-          <div className="row align-items-center">
-            <div className="col-12 col-md-4 mx-auto">
-              <div className="justify-center my-4">
-                <h5>
-                  50+ Beautiful rooms <br /> inspiration
-                </h5>
-                <p>
-                  Our designer already made a lot of beautiful prototipe of
-                  rooms that inspire you
-                </p>
-
-                <button className="home-btn">Explore More</button>
-              </div>
-            </div>
-
-            <div className="col-12 col-md-8 my-5">
-              <div className="row g-3">
-                <div className="col-12 col-md-6" style={{ height: "500px" }}>
-                  <img
-                    className="h-100 w-100"
-                    src="https://i.ibb.co/Fmh4710/Rectangle-24.png"
-                    alt=""
-                  />
-                </div>
-                <div className="col-12 col-md-6" style={{ height: "500px" }}>
-                  <img
-                    className="h-100 w-100"
-                    src=" https://i.ibb.co/kg5yLDx/Rectangle-25.png"
-                    alt=""
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Gallary section  */}
-      <section>
-        <div className="mt-5">
-          <p className="text-center">Share your setup with</p>
-          <h4 style={{ color: " #b88e2f" }} className="text-center">
-            #FuniroFurniture
-          </h4>
-        </div>
-        <div className="container">
-          <div className="row ">
-            <div className="col-12 col-md-4">
-              <div className="row">
-                <div className="col-3">
-                  <img
-                    style={{ height: "90%" }}
-                    src="https://i.ibb.co/6mc5PJ3/Rectangle-36.png"
-                    alt=""
-                  />
-                </div>
-                <div className="col-9 m-auto">
-                  <img
-                    style={{ width: "100%" }}
-                    src="https://i.ibb.co/26WfLB4/Rectangle-38.png"
-                    alt=""
-                  />
-                </div>
-              </div>
-              <div className="row ">
-                <div className="col-4">
-                  <img
-                    className="w-100 h-100"
-                    src="https://i.ibb.co/hM8NF3k/Rectangle-37.png"
-                    alt=""
-                  />
-                </div>
-                <div className="col-8 m-auto">
-                  <img
-                    className="w-100"
-                    src="https://i.ibb.co/sQC8KpD/Rectangle-39.png"
-                    alt=""
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="col-12 col-md-4 m-auto">
-              <img
-                className="w-100"
-                src="https://i.ibb.co/s6TMJGz/Rectangle-40.png"
-                alt=""
-              />
-            </div>
-            <div className="col-12 col-md-4">
-              <div className="row">
-                <div className="col-6 ">
-                  <img
-                    className="w-100"
-                    src="https://i.ibb.co/ykXv4sf/Rectangle-43.png"
-                    alt=""
-                  />
-                </div>
-                <div className="col-6 m-auto">
-                  <img
-                    style={{ width: "100%" }}
-                    src="https://i.ibb.co/nbPzLQJ/Rectangle-45.png"
-                    alt=""
-                  />
-                </div>
-              </div>
-              <div className="row ">
-                <div className="col-6">
-                  <img
-                    className="w-100"
-                    src="https://i.ibb.co/p0N5GYX/Rectangle-41.png"
-                    alt=""
-                  />
-                </div>
-                <div className="col-6 m-auto">
-                  <img
-                    className="w-100"
-                    src="https://i.ibb.co/9HCwkyw/Rectangle-44.png"
-                    alt=""
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
       <section className="identity my-5 p-5">
         <div className="">
           <div className="row g-3">
@@ -278,7 +139,7 @@ const Home = () => {
             <div className="col-md-3 col-6 d-flex align-items-center justify-content-center">
               <BsCartCheck style={{ fontSize: "40px" }} />
               <div className="ms-3">
-                <h6 style={{ marginBottom: "0px" }}>Free shipping</h6>
+                <h6 style={{ marginBottom: "0px" }}>Enjoy Discount</h6>
                 <small style={{ color: "gray" }}>Order over 150 $</small>
               </div>
             </div>

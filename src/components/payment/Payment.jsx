@@ -10,10 +10,10 @@ const options = {
   currency: "usd",
 };
 
-const Payment = ({ price }) => {
+const Payment = ({ price, machine }) => {
   return (
     <Elements stripe={stripePromise} options={options}>
-      <CheckoutForm price={price} />
+      <CheckoutForm price={price} machine={machine} />
     </Elements>
   );
 };
